@@ -6,7 +6,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://dev-meet-x.vercel.app/",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -26,8 +26,8 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database connection established...");
-    app.listen(4073, () => {
-      console.log("Server is successfully listening on port 4073...");
+    app.listen(5000, () => {
+      console.log("Server is successfully listening on port 5000...");
     });
   })
   .catch((err) => {

@@ -6,7 +6,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://dev-meet-x-4qrt.vercel.app/",
     credentials: true,
   })
 );

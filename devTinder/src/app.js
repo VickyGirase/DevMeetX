@@ -6,7 +6,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://devmeetx-x-eify.onrender.com/",
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );

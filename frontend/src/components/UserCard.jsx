@@ -2,6 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeUserFromFeed } from "../utils/feedSlice";
+import Footer from "./Footer";
 
 const UserCard = ({ user }) => {
   const { _id, firstName, lastName, age, gender, about } = user;
@@ -19,7 +20,8 @@ const UserCard = ({ user }) => {
   };
 
   return (
-    <div className="card bg-base-300 w-96 shadow-xl">
+    <>
+      <div className="card bg-base-300 w-72 md:w-96 shadow-xl mb-10">
       <figure>
         <img src={user.photoUrl} alt="photo" />
       </figure>
@@ -42,7 +44,10 @@ const UserCard = ({ user }) => {
           </button>
         </div>
       </div>
+      
     </div>
+    <Footer/>
+    </>
   );
 };
 export default UserCard;

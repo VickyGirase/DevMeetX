@@ -20,9 +20,9 @@ const NavBar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-base-300 ">
       <div className="flex-1">
-        <Link to="/" className="pl-5 font-semibold rounded-lg p-2 hover:bg-base-200 text-xl">
+        <Link to="/" className="pl-5 font-semibold rounded-lg p-2 hover:bg-base-200 text-lg md:text-xl">
           👩‍💻 DevMeetX
         </Link>
       </div>

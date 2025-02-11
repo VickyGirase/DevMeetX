@@ -16,7 +16,9 @@ const Requests = () => {
         { withCredentials: true }
       );
       dispatch(removeRequest(_id));
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const fetchRequests = async () => {
@@ -26,7 +28,9 @@ const Requests = () => {
       });
 
       dispatch(addRequests(res.data.data));
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {

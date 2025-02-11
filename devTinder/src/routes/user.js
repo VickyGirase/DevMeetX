@@ -16,22 +16,20 @@ userRouter.get("/user/requests/received", userAuth, async (req, res) => {
       status: "interested",
     }).populate("fromUserId", USER_SAFE_DATA);
 
-    if(!connectionRequests.data){
-      res.send("No ConnectionRequests Available Currently")
-    }
-    else
-    {
-      res.json({
-        message: "Data fetched successfully",
-        data: connectionRequests,
-      });
+    if (connectionRequests.length === 0) {
+      return res.json({ success: true, data: [] });
     }
 
-   
+    res.json({
+      success: true,
+      message: "Data fetched successfully",
+      data: connectionRequests,
+    });
   } catch (err) {
-    req.statusCode(400).send("ERROR: " + err.message);
+    res.status(400).json({ success: false, message: "ERROR: " + err.message });
   }
 });
+
 
 userRouter.get("/user/connections", userAuth, async (req, res) => {
   try {

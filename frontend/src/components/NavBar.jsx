@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import logo from "../images/devlogo.png"
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -22,9 +23,7 @@ const NavBar = () => {
   return (
     <div className="navbar bg-base-300 ">
       <div className="flex-1">
-        <Link to="/" className="pl-5 font-semibold rounded-lg p-2 hover:bg-base-200 text-lg md:text-xl">
-          👩‍💻 DevMeetX
-        </Link>
+        <img src={logo} alt="img" className="w-28 hover:bg-base-200 rounded-lg" onClick={()=> navigate("/")}/>
       </div>
       {user && (
         <div className="flex-none gap-2">

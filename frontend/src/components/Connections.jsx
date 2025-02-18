@@ -1,12 +1,14 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
-import { connect, useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
+
   const fetchConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
@@ -15,7 +17,6 @@ const Connections = () => {
       dispatch(addConnections(res.data.data));
     } catch (err) {
       console.log(err);
-      
     }
   };
 
@@ -23,22 +24,21 @@ const Connections = () => {
     fetchConnections();
   }, []);
 
-  if (!connections) return;
+  if (!connections) return null; // Return null instead of nothing
 
-  if (connections.length === 0) return <h1> No Connections Found</h1>;
+  if (connections.length === 0) return <h1>No Connections Found</h1>;
 
   return (
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connections</h1>
 
       {connections.map((connection) => {
-        const { _id, firstName, lastName, photoUrl, age, gender, about } =
-          connection;
+        const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
 
         return (
           <div
-            key={_id}
-            className=" flex m-4 p-4 rounded-lg bg-base-300 w-72 md:w-1/2 mx-auto"
+            key={_id} // Use _id here for unique key
+            className="flex m-4 p-4 rounded-lg bg-base-300 w-72 md:w-1/2 mx-auto"
           >
             <div>
               <img
@@ -47,17 +47,20 @@ const Connections = () => {
                 src={photoUrl}
               />
             </div>
-            <div className="text-left mx-4 ">
-              <h2 className="font-bold text-xl">
-                {firstName + " " + lastName}
-              </h2>
+            <div className="text-left mx-4">
+              <h2 className="font-bold text-xl">{firstName + " " + lastName}</h2>
               {age && gender && <p>{age + ", " + gender}</p>}
               <p>{about}</p>
             </div>
+
+            <Link to={`/chat/${_id}`}>
+              <button className="bg-green-500 rounded-lg font-semibold px-7 py-3 ml-20 mt-3 text-white">Chat</button>
+            </Link>
           </div>
         );
       })}
     </div>
   );
 };
+
 export default Connections;

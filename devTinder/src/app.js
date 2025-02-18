@@ -3,10 +3,13 @@ const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const http = require("http");
+const initializeSocket = require("./utils/socket");
 
 app.use(
   cors({
-    origin: "https://dev-meet-x.vercel.app",  
+    origin: "https://dev-meet-x.vercel.app", 
+
     credentials: true,
   })
 );
@@ -18,6 +21,11 @@ const profileRouter = require("./routes/profile");
 const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 
+const server = http.createServer(app);
+
+initializeSocket(server);
+
+
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
@@ -26,7 +34,7 @@ app.use("/", userRouter);
 connectDB()
   .then(() => {
     console.log("Database connection established...");
-    app.listen(5000, () => {
+    server.listen(5000, () => {
       console.log("Server is successfully listening on port 5000...");
     });
   })

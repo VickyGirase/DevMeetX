@@ -9,6 +9,7 @@ import Connections from "./components/Connections";
 import Requests from "./components/Requests";
 import About from "./components/About";
 import Error from "./components/Error";
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/requests" element={<Requests />} />
               <Route path="/about" element={<About />} />
               <Route path="/error" element={<Error />} />
+              <Route path="/chat/:targetUserId" element={<Chat />} />
             </Route>
           </Routes>
         </BrowserRouter>

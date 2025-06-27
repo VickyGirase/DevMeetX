@@ -1,7 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
-import {useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,8 @@ const Connections = () => {
       <h1 className="text-bold text-white text-3xl">Connections</h1>
 
       {connections.map((connection) => {
-        const { _id, firstName, lastName, photoUrl, age, gender, about } = connection;
+        const { _id, firstName, lastName, photoUrl, age, gender, about } =
+          connection;
 
         return (
           <div
@@ -48,13 +49,17 @@ const Connections = () => {
               />
             </div>
             <div className="text-left mx-4">
-              <h2 className="font-bold text-xl">{firstName + " " + lastName}</h2>
+              <h2 className="font-bold text-xl">
+                {firstName + " " + lastName}
+              </h2>
               {age && gender && <p>{age + ", " + gender}</p>}
               <p>{about}</p>
             </div>
 
             <Link to={`/chat/${_id}`}>
-              <button className="bg-green-500 rounded-lg font-semibold px-7 py-3 ml-20 mt-3 text-white">Chat</button>
+              <button className="bg-green-500 rounded-lg font-semibold px-7 py-3 ml-20 mt-3 text-white">
+                Chat
+              </button>
             </Link>
           </div>
         );

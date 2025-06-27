@@ -10,6 +10,7 @@ import Requests from "./components/Requests";
 import About from "./components/About";
 import Error from "./components/Error";
 import Chat from "./components/Chat";
+import GetStarted from "./components/GetStarted";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <BrowserRouter basename="/">
           <Routes>
             <Route path="/" element={<Body />}>
+            <Route path="/getStarted" element={<GetStarted />} />
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />

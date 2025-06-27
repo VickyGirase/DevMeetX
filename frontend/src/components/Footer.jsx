@@ -16,7 +16,7 @@ const Footer = () => {
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside> */}
 
-      <h1 className="w-full ml-[30%] md:ml-[85%] font-semibold">Made With 🩷 Vicky</h1>
+      <h1 className="w-full ml-[30%] md:ml-[85%] font-semibold">Made With 🩷 Team</h1>
       <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end ml-[30%] md:ml-[85%]">
         <a>
           <svg

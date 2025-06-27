@@ -6,6 +6,7 @@ import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { useEffect } from "react";
+import GetStarted from "./GetStarted";
 
 const Body = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Body = () => {
       dispatch(addUser(res.data));
     } catch (err) {
       if (err.status === 401) {
-        navigate("/login");
+        navigate("/getStarted");
       }
       console.error(err);
     }

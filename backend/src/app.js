@@ -8,7 +8,9 @@ const initializeSocket = require("./utils/socket");
 
 app.use(
   cors({
-    origin: "https://dev-meet-x.vercel.app", 
+    origin: "http://localhost:5174",
+
+    // "https://dev-meet-x.vercel.app"
 
     credentials: true,
   })
@@ -25,7 +27,6 @@ const server = http.createServer(app);
 
 initializeSocket(server);
 
-
 app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
@@ -39,5 +40,5 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.error("Database cannot be connected!!");
+    console.error("Database cannot be connected!!", err);
   });

@@ -8,9 +8,12 @@ const initializeSocket = require("./utils/socket");
 
 app.use(
   cors({
-    origin: "http://localhost:5174",
+    // origin: "http://localhost:5174",
 
-    // "https://dev-meet-x.vercel.app"
+        origin: "https://dev-meet-x.vercel.app",
+
+
+    // 
 
     credentials: true,
   })

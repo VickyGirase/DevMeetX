@@ -3,7 +3,7 @@ const socket = require("socket.io");
 const initializeSocket = (server) => {
   const io = socket(server, {
     cors: {
-      origin: "http://localhost:5174",
+      origin: ["http://localhost:5174", "https://dev-meet-x.vercel.app", "http://localhost:5173", "http://localhost:5175"],
       credentials: true,
     },
   });

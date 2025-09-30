@@ -6,18 +6,16 @@ const cors = require("cors");
 const http = require("http");
 const initializeSocket = require("./utils/socket");
 
-app.use(
-  cors({
-    // origin: "http://localhost:5174",
-
-        origin: "https://dev-meet-x.vercel.app",
 
 
-    // 
+const allowedOrigin = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://dev-meet-x.vercel.app"];
 
-    credentials: true,
-  })
-);
+const corsOptions = {
+  origin: allowedOrigin,
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
